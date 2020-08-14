@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({
 var server = http.createServer(app);
 var request = require("request");
 
-var result = req.query['hub.challenge']
+var result = "ok"
 
 module.exports = (req, res) => {
   if (req.query['hub.verify_token'] === 'ma_xac_minh_cua_ban') {
@@ -47,7 +47,6 @@ module.exports = (req, res) => {
         }
       }
     }
-    result = 'ok';
   }
   res.status(200).send(result)
 }
