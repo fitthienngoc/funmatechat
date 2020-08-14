@@ -19,8 +19,7 @@ var request = require("request");
 
 module.exports = (req, res) => {
   if (req.query['hub.verify_token'] === 'ma_xac_minh_cua_ban') {
-    res.send(req.query['hub.challenge']);
-    res.status(200).send('ok')
+    res.status(200).send(req.query['hub.challenge'])
   }
 
   // if (req && req.body && req.entry) {
