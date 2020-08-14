@@ -17,40 +17,38 @@ var request = require("request");
 
 
 
-// Xử lý khi có người nhắn tin cho bot
 module.exports = (req, res) => {
   if (req.query['hub.verify_token'] === 'ma_xac_minh_cua_ban') {
     res.send(req.query['hub.challenge']);
     res.status(200).send('ok')
-    break;
   }
 
-  if (req && req.body && req.entry) {
-    let { body } = req
-    let { entry } = body
-    if (entry && entry.length > 0) {
-      for (let index = 0; index < entry.length; index++) {
-        let element = entry[index];
-        let mess = element.messaging
-        if (mess && mess.length > 0) {
-          for (let i_ = 0; i_ < mess.length; i_++) {
-            let element2 = mess[i_];
-            sendTextMessage(element2.sender ? element2.sender.id : false, element2.message ? element2.message.text : false)
-            // sendTextMessage(element2.sender ? element2.sender.id : false, element2.message ? element2.message.text : false)
-            // if (element2.message && element2.message.nlp) {
-            //   let { id } = element2.sender
-            //   let { text } = element2.message
-            //   console.log(id, text)
-            //   let sendZ = sendTextMessage(id, "Tui là bot đây: " + text)
-            // } else {
-            //   res.status(200).send("not send")
-            // }
-          }
-        }
-      }
-    }
-    res.status(200).send('ok')
-  }
+  // if (req && req.body && req.entry) {
+  //   let { body } = req
+  //   let { entry } = body
+  //   if (entry && entry.length > 0) {
+  //     for (let index = 0; index < entry.length; index++) {
+  //       let element = entry[index];
+  //       let mess = element.messaging
+  //       if (mess && mess.length > 0) {
+  //         for (let i_ = 0; i_ < mess.length; i_++) {
+  //           let element2 = mess[i_];
+  //           sendTextMessage(element2.sender ? element2.sender.id : false, element2.message ? element2.message.text : false)
+  //           // sendTextMessage(element2.sender ? element2.sender.id : false, element2.message ? element2.message.text : false)
+  //           // if (element2.message && element2.message.nlp) {
+  //           //   let { id } = element2.sender
+  //           //   let { text } = element2.message
+  //           //   console.log(id, text)
+  //           //   let sendZ = sendTextMessage(id, "Tui là bot đây: " + text)
+  //           // } else {
+  //           //   res.status(200).send("not send")
+  //           // }
+  //         }
+  //       }
+  //     }
+  //   }
+  //   res.status(200).send('ok')
+  // }
 }
 
 
